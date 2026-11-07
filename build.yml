@@ -1,0 +1,24 @@
+name: Build PSP
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compilar con PSPDEV (Docker)
+        run: |
+          docker run --rm -v "$PWD":/src -w /src ghcr.io/pspdev/pspdev:latest make
+
+      - name: Subir EBOOT.PBP
+        uses: actions/upload-artifact@v4
+        with:
+          name: smbpsp-eboot
+          path: EBOOT.PBP
+          if-no-files-found: error

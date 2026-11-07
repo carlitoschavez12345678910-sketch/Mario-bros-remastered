@@ -1,0 +1,12 @@
+# Compilacion
+*.o
+*.elf
+*.prx
+*.SFO
+PARAM.SFO
+EBOOT.PBP
+
+# Assets de Nintendo: NO subir (extraelos tu de tu propia ROM)
+*.nes
+rom/
+assets/
